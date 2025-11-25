@@ -5,8 +5,8 @@ from PyPDF2 import PdfReader
 from langchain_text_splitters import RecursiveCharacterTextSplitter
 from langchain_huggingface import HuggingFaceEmbeddings
 from langchain_community.vectorstores import FAISS
-from langchain.docstore.document import Document
-from langchain.prompts import PromptTemplate
+from langchain_core.documents import Document
+from langchain_core.prompts import PromptTemplate
 from langchain.chains.question_answering import load_qa_chain
 from langchain_google_genai import ChatGoogleGenerativeAI
 import google.generativeai as genai
@@ -244,3 +244,21 @@ with left:
                                 st.caption("Sources: " + ", ".join(sources))
                             except Exception as e:
                                 st.error(f"Error during LLM generation: {e}")
+
+# with right:
+#     st.subheader("Session Snapshot")
+#     st.write("Uploaded files:")
+#     for f in (st.session_state.uploaded_files or []):
+#         st.write(f"- {f.name}")
+#     st.write("Stored extracted texts:")
+#     for k, v in st.session_state.pdf_texts.items():
+#         st.write(f"- {k} (chars: {len(v)})")
+#     st.write("Summaries cached:")
+#     for k in st.session_state.summaries.keys():
+#         st.write(f"- {k}")
+#     st.write(f"FAISS built: {st.session_state.faiss_built}")
+#     st.write("---")
+#     st.info("Embeddings: local sentence-transformers (no Google embedding quota required).")
+#     st.info("LLM: Gemini (requires GOOGLE_API_KEY).")
+
+# End of file
