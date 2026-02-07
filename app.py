@@ -19,7 +19,7 @@ GOOGLE_API_KEY = os.getenv("GOOGLE_API_KEY")
 if GOOGLE_API_KEY:
     genai.configure(api_key=GOOGLE_API_KEY)
 
-LLM_MODEL = "gemini-2.5-pro"  # you can switch to gemini-1.5-pro if you want
+LLM_MODEL = "gemini-2.5-flash"  # you can switch to gemini-1.5-pro if you want
 EMBED_MODEL_NAME = "sentence-transformers/all-MiniLM-L6-v2"
 FAISS_DIR = "faiss_index"
 
@@ -249,3 +249,4 @@ if st.button("Get Answer"):
                 # Show sources
                 sources = {d.metadata.get("source", "unknown") for d in docs}
                 st.caption("Sources: " + ", ".join(sources))
+
